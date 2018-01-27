@@ -9,7 +9,7 @@ public class MovingUnit : MonoBehaviour {
 	protected Tile currentTile;
 
 	private Direction[] directions = { Direction.North, Direction.East, Direction.South, Direction.West };
-	private Vector2[] directionsVec = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+	private Vector3Int[] directionsVec = { Vector3Int.up, Vector3Int.right, Vector3Int.down, Vector3Int.left };
 
 	public void Rotate(ClockRot rot){
 		int index = System.Array.FindIndex(directions, x => x == facingDirection);
@@ -27,5 +27,19 @@ public class MovingUnit : MonoBehaviour {
 		facingDirection = directions[newIndex];
 	}
 
+	public void Forward(int lenght = 1){
+		int index = System.Array.FindIndex(directions, x => x == facingDirection);
 
+		Tile newTile = MapManager.Instance.GetTileAt(currentTile.pos + directionsVec[index]);
+
+		if(!MapManager.Instance.isValid(newTile)){
+			return;
+		}
+
+		currentTile.OnTileExit (this);
+		newTile.OnTileEnter (this);
+
+		currentTile = newTile;
+		transform.position += directionsVec [index];
+	}
 }

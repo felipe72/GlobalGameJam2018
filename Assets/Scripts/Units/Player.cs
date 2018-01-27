@@ -9,7 +9,7 @@ public class Player : MovingUnit {
 
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.W)) {
-			MovementManager.Instance.Forward ();
+			Forward ();
 		} else if (Input.GetKeyDown (KeyCode.D)) {
 			Rotate (ClockRot.Clockwise);
 		} else if (Input.GetKeyDown (KeyCode.A)) {
