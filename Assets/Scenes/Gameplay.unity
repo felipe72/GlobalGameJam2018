@@ -381,7 +381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -506, y: 148}
+  m_AnchoredPosition: {x: 578, y: -201}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &693026516
@@ -1264,7 +1264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -508, y: 9.702019}
+  m_AnchoredPosition: {x: -533, y: -156}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1675680459
@@ -1489,18 +1489,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsAvailable:
-  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
-  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
-  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
-  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
-  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
-  - {fileID: 1820470172900306, guid: 7729a0d86c689614cbfea3b140aa0a68, type: 2}
-  - {fileID: 1820470172900306, guid: 7729a0d86c689614cbfea3b140aa0a68, type: 2}
-  - {fileID: 1820470172900306, guid: 7729a0d86c689614cbfea3b140aa0a68, type: 2}
-  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
-  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
-  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
-  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
+  - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
+  - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
+  - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
+  - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
+  - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
+  - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
+  - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
+  - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
+  - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
+  - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
+  - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
+  - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
   cardsOnHand: []
   cardsOnDeckStack: []
   cardsOnDiscardStack: []
