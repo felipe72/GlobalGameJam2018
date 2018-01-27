@@ -15,14 +15,6 @@ public class EnergyManager : MonoBehaviour {
 		UpdateBar ();
 	}
 
-	void Update(){
-		if (Input.GetKeyDown (KeyCode.J)) {
-			int amount = Random.Range (1, 21);
-			currentEnergy = amount;
-			UpdateBar ();
-		}
-	}
-
 	void UpdateBar(){
 		int k = Mathf.FloorToInt(currentEnergy / 2f);
 
@@ -40,6 +32,13 @@ public class EnergyManager : MonoBehaviour {
 		if (currentEnergy % 2 == 1) {
 			l [k].fillAmount = .5f;
 		}
+	}
+
+	public void ChangeEnergy(int amount){
+		currentEnergy += amount;
+
+		currentEnergy = Mathf.Max (0, currentEnergy);
+		currentEnergy = Mathf.Min (20, currentEnergy);
 	}
 
 	Color GetCurrentColor(){
