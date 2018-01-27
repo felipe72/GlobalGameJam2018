@@ -53,6 +53,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0, z: 0}
+  sprites: []
+  height: 2
+  width: 2
+  bottomRight:
+  - {fileID: 21300000, guid: 6d0f3fafff833154e8096dd3cfe1095f, type: 3}
+  bottom:
+  - {fileID: 21300000, guid: 2b766aba8760eff409c6fd2efcf86c7c, type: 3}
+  - {fileID: 21300000, guid: 5d0ae60377bcf9d42964b5a77db605f9, type: 3}
+  bottomLeft:
+  - {fileID: 21300000, guid: c5974414740ba6c46aa73529f0049bbe, type: 3}
+  left:
+  - {fileID: 21300000, guid: e0de951256c9fdd49be86802a0ffaeea, type: 3}
+  - {fileID: 21300000, guid: bb84b340e1b54b849b0bccd761391fd9, type: 3}
+  upperLeft:
+  - {fileID: 21300000, guid: 569364db713ffae438515fb64140e28d, type: 3}
+  upper:
+  - {fileID: 21300000, guid: 755864f63bb1b3d4a9d9beca7f3a3788, type: 3}
+  - {fileID: 21300000, guid: 2e98dae0c93d26c47bbfe32dbcdb5a7c, type: 3}
+  upperRight:
+  - {fileID: 21300000, guid: d761a9f91456cb245b80cbcbe1009292, type: 3}
+  right:
+  - {fileID: 21300000, guid: e0de951256c9fdd49be86802a0ffaeea, type: 3}
+  - {fileID: 21300000, guid: bb84b340e1b54b849b0bccd761391fd9, type: 3}
 --- !u!212 &212496574482012868
 SpriteRenderer:
   m_ObjectHideFlags: 1

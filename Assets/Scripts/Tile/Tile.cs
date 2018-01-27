@@ -5,10 +5,18 @@ using UnityEngine;
 public delegate void TileEvent(MovingUnit unit);
 
 public class Tile : MonoBehaviour{
+	[Header("Configurations")]
 	public Vector3Int pos;
+	public Sprite[] sprites;
 
 	public event TileEvent onTileEnter;
 	public event TileEvent onTileExit;
+
+	void Awake(){
+		if (sprites.Length != 0) {
+			GetComponent<SpriteRenderer> ().sprite = sprites [Random.Range (0, sprites.Length)];
+		}
+	}
 
 	public void OnTileEnter(MovingUnit unit){
 		if (onTileEnter != null) {
