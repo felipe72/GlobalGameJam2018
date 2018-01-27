@@ -50,8 +50,6 @@ public class Tile : MonoBehaviour{
 	}
 
 	public void PushBack(MovingUnit unit){
-		unit.transform.DOShakeRotation (.3f);
-
 		unit.PushBack (1);
 	}
 }

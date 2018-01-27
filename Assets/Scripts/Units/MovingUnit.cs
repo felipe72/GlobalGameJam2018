@@ -60,6 +60,7 @@ public class MovingUnit : MonoBehaviour {
 		Tile newTile = MapManager.Instance.GetTileAt(currentTile.pos + directionsVec[index]);
 
 		if(!MapManager.Instance.isValid(newTile)){
+			PushBack (0);
 			return;
 		}
 
@@ -86,6 +87,7 @@ public class MovingUnit : MonoBehaviour {
 		int index = System.Array.FindIndex(directions, x => x == facingDirection);
 
 		index = (index + 2) % directions.Length;
+		transform.DOShakeRotation (.3f);
 
 
 		Push (directions [index], length);

@@ -104,7 +104,25 @@ public class MapManager : Singleton<MapManager> {
 			}
 			CornersBoolMap (pos.x, pos.y, boolMap);
 			enemyList.Add(Instantiate (enemy.gameObject, new Vector3 (pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>());
+
+			if (AmountOfSpace (boolMap) == 0) {
+				break;
+			}
 		}
+	}
+
+	int AmountOfSpace(bool[,] boolMap){
+		int amount = 0;
+
+		for (int x = 0; x < tilesWidth; x++) {
+			for (int y = 0; y < tilesHeight; y++) {
+				if (boolMap [x, y]) {
+					amount++;
+				}
+			}
+		}
+
+		return amount;
 	}
 
 	void CornersBoolMap(int x, int y, bool[,] boolMap){
