@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
@@ -13,6 +14,14 @@ public class Card : MonoBehaviour {
 	public Sprite symbol;
 
 	public bool isAlreadySelected = false;
+
+	/*void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.H)) 
+		{
+			RotateCard ();
+		}
+	}*/
 
 	public void AddToExecutionStack()
 	{
@@ -34,6 +43,11 @@ public class Card : MonoBehaviour {
 			break;
 		}
 
+	}
+
+	public void RotateCard()
+	{
+		this.transform.DORotate (new Vector3 (0, 0, 0), 1f).SetLoops (1, LoopType.Incremental).SetEase(Ease.Linear);
 	}
 
 	public void Foward ()

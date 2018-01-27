@@ -47,9 +47,13 @@ public class CardsManager : Singleton<CardsManager> {
 			GameObject _card = cardsOnDeckStack[index];
 			if (_card) 
 			{
+				Card cardComp = _card.GetComponent<Card> ();
 				_card.transform.SetParent (handCards.transform);
 				cardsOnDeckStack.Remove (_card);
 				cardsOnHand.Add (_card);
+				cardComp.RotateCard ();
+				Debug.Log ("jooj");
+				//yield return new WaitForSeconds (0.1f);
 			}
 		}
 	}
@@ -70,7 +74,7 @@ public class CardsManager : Singleton<CardsManager> {
 	{
 		for (int i = 0; i < cardsAvailable.Count; i++) 
 		{
-			GameObject goCard =  Instantiate (cardsAvailable [i], deckCards.transform);
+			GameObject goCard =  Instantiate (cardsAvailable [i],deckCards.transform);
 			cardsOnDeckStack.Add (goCard);
 		}
 		ShuffleDeck (3);
@@ -120,10 +124,17 @@ public class CardsManager : Singleton<CardsManager> {
 		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
 		{
 			GameObject _card = cardsOnExecutionStack [i];
+
+			//RectTransform rect = (RectTransform)_card.transform;
 			_card.transform.SetParent (discardCards.transform);
+			_card.transform.localPosition = new Vector3 (0, 0, 0);
+
+			//yield return null;
+
 			cardsOnHand.Remove (_card);
 			cardsOnDiscardStack.Add (_card);
 		}
+
 		yield return new WaitForSeconds (1f);
 		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
 		{
@@ -131,6 +142,11 @@ public class CardsManager : Singleton<CardsManager> {
 			_currentCard.Execute ();
 			yield return new WaitForSeconds (1f);
 		}
+		//Refresh Turn
+		RefreshHandCards ();
+		cardsOnExecutionStack.Clear ();
+		RefreshImageSymbols ();
+		actionsAmount = 0;
 	}
 
 
