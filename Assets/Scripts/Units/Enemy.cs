@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Enemy : MovingUnit {
 	new void Start(){
@@ -8,7 +9,7 @@ public class Enemy : MovingUnit {
 
 		facingDirection = directions [Random.Range (0, directions.Length)];
 		UpdateAnim ();
-
+		AddPushBack ();
 		SetNextTile ();
 	}
 
@@ -21,11 +22,16 @@ public class Enemy : MovingUnit {
 	void DoAI(){
 		Tile tile = GetForwardTile ();
 
-		if (MapManager.Instance.isValid(tile) && tile.type != TileType.Wall) {
-			tile.RemoveHurt ();
+		if (MapManager.Instance.isValid(tile) && tile.type != TileType.Wall && !MapManager.Instance.enemyInTile(tile)) {			
+			RemovePushBack ();
 			MoveToTile (tile);
+			AddPushBack ();
 		} else {
 			Rotate (ClockRot.Clockwise, 2);
+		}
+
+		if (MapManager.Instance.isValid (tile)) {
+			tile.RemoveHurt ();
 		}
 
 		SetNextTile ();
@@ -46,5 +52,13 @@ public class Enemy : MovingUnit {
 		Tile tile = MapManager.Instance.GetTileAt (pos);
 
 		return tile;
+	}
+
+	void AddPushBack(){
+		currentTile.onTileEnter += currentTile.PushBack;
+	}
+
+	void RemovePushBack(){
+		currentTile.onTileEnter -= currentTile.PushBack;
 	}
 }

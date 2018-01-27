@@ -7,7 +7,8 @@ public class MovingUnit : MonoBehaviour {
 	[Header("Configuration")]
 	public Direction facingDirection = Direction.North;
 
-	protected Tile currentTile;
+	[HideInInspector]
+	public Tile currentTile;
 	protected Animator anim;
 
 	protected Direction[] directions = { Direction.North, Direction.East, Direction.South, Direction.West };

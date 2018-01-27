@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public delegate void TileEvent(MovingUnit unit);
 
@@ -46,5 +47,11 @@ public class Tile : MonoBehaviour{
 
 	public void HurtUnit(MovingUnit unit){
 		print (unit.gameObject.name + " was hurt!");
+	}
+
+	public void PushBack(MovingUnit unit){
+		unit.transform.DOShakeRotation (.3f);
+
+		unit.PushBack (1);
 	}
 }

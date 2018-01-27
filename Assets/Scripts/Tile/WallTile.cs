@@ -74,10 +74,4 @@ public class WallTile : Tile {
 	T Rand<T>(T[] array){
 		return array [Random.Range (0, array.Length)];
 	}
-
-	void PushBack(MovingUnit unit){
-		unit.transform.DOShakeRotation (.3f);
-
-		unit.PushBack (1);
-	}
 }

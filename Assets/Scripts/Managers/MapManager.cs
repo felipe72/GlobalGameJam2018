@@ -20,8 +20,11 @@ public class MapManager : Singleton<MapManager> {
 	public Enemy[] enemies;
 
 	Tile[,] map;
+	List<Enemy> enemyList;
+
 
 	void Awake(){
+		enemyList = new List<Enemy> ();
 		GenerateMap ();	
 	}
 
@@ -100,7 +103,7 @@ public class MapManager : Singleton<MapManager> {
 				pos = new Vector2Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight));;
 			}
 			CornersBoolMap (pos.x, pos.y, boolMap);
-			Instantiate (enemy.gameObject, new Vector3 (pos.x, pos.y, 0), Quaternion.identity);
+			enemyList.Add(Instantiate (enemy.gameObject, new Vector3 (pos.x, pos.y, 0), Quaternion.identity).GetComponent<Enemy>());
 		}
 	}
 
@@ -194,6 +197,16 @@ public class MapManager : Singleton<MapManager> {
 		}
 
 		return map [pos.x, pos.y];
+	}
+
+	public bool enemyInTile(Tile tile){
+		foreach (var enemy in enemyList) {
+			if (enemy.currentTile == tile) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public bool isValid(Tile tile){
