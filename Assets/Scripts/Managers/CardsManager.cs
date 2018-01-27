@@ -43,17 +43,20 @@ public class CardsManager : Singleton<CardsManager> {
 		int currentAmount = cardsOnHand.Count;
 		for (int i = 0; i < 5 - currentAmount; i++) 
 		{
-			int index = cardsOnDeckStack.Count-1;	
-			GameObject _card = cardsOnDeckStack[index];
-			if (_card) 
+			if (cardsOnDeckStack [0]) 
 			{
-				Card cardComp = _card.GetComponent<Card> ();
-				_card.transform.SetParent (handCards.transform);
-				cardsOnDeckStack.Remove (_card);
-				cardsOnHand.Add (_card);
-				cardComp.RotateCard ();
-				Debug.Log ("jooj");
-				//yield return new WaitForSeconds (0.1f);
+				int index = cardsOnDeckStack.Count-1;	
+				GameObject _card = cardsOnDeckStack[index];
+				if (_card) 
+				{
+					Card cardComp = _card.GetComponent<Card> ();
+					_card.transform.SetParent (handCards.transform);
+					cardsOnDeckStack.Remove (_card);
+					cardsOnHand.Add (_card);
+					cardComp.RotateToFront ();
+					Debug.Log ("jooj");
+					//yield return new WaitForSeconds (0.1f);
+				}
 			}
 		}
 	}
@@ -99,6 +102,8 @@ public class CardsManager : Singleton<CardsManager> {
 			RefreshImageSymbols ();
 		}
 
+		TurnManager.Instance.startTurnButton.interactable = (actionsAmount >= 1);
+
 	}
 
 	void RefreshImageSymbols()
@@ -121,15 +126,15 @@ public class CardsManager : Singleton<CardsManager> {
 
 	IEnumerator ExecuteTurn()
 	{
+		TurnManager.Instance.SetHandCards (false);
 		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
 		{
 			GameObject _card = cardsOnExecutionStack [i];
+			Card cardComp = _card.GetComponent<Card> ();
 
-			//RectTransform rect = (RectTransform)_card.transform;
 			_card.transform.SetParent (discardCards.transform);
 			_card.transform.localPosition = new Vector3 (0, 0, 0);
-
-			//yield return null;
+			cardComp.RotateToBack ();
 
 			cardsOnHand.Remove (_card);
 			cardsOnDiscardStack.Add (_card);
@@ -142,11 +147,15 @@ public class CardsManager : Singleton<CardsManager> {
 			_currentCard.Execute ();
 			yield return new WaitForSeconds (1f);
 		}
-		//Refresh Turn
 		RefreshHandCards ();
 		cardsOnExecutionStack.Clear ();
 		RefreshImageSymbols ();
 		actionsAmount = 0;
+
+		//Enemy Turn
+
+
+
 	}
 
 
