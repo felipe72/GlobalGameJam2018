@@ -54,8 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0, z: 0}
   sprites: []
-  height: 2
-  width: 2
+  height: 4
+  width: 3
   bottomRight:
   - {fileID: 21300000, guid: 6d0f3fafff833154e8096dd3cfe1095f, type: 3}
   bottom:
@@ -76,6 +76,11 @@ MonoBehaviour:
   right:
   - {fileID: 21300000, guid: e0de951256c9fdd49be86802a0ffaeea, type: 3}
   - {fileID: 21300000, guid: bb84b340e1b54b849b0bccd761391fd9, type: 3}
+  center:
+  - {fileID: 21300000, guid: c4c3dd7e48153f34e8e59e3081b2b954, type: 3}
+  - {fileID: 21300000, guid: 94c6309870fb7ae4eb041ca2f587a056, type: 3}
+  - {fileID: 21300000, guid: 2867fd534c02e084e9fe7c1d189f1043, type: 3}
+  - {fileID: 21300000, guid: 2661beb3aec3a3b4d85d623c4bea6787, type: 3}
 --- !u!212 &212496574482012868
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -111,7 +116,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f1c46b91083c8504bb276b2c022f9dd3, type: 3}
-  m_Color: {r: 0.021410054, g: 0.72794116, b: 0.11399008, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
