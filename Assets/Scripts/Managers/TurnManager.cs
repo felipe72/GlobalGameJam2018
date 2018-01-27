@@ -20,6 +20,15 @@ public class TurnManager : Singleton<TurnManager> {
 		}
 	}
 
+	public void SetAlreadyTaken(bool state)
+	{
+		for (int i = 0; i < CardsManager.Instance.cardsOnHand.Count; i++) 
+		{
+			Card _card = CardsManager.Instance.cardsOnHand [i].GetComponent<Card> ();
+			_card.isAlreadySelected = state;
+		}
+	}
+
 	void Start()
 	{
 		SetHandCards (true);

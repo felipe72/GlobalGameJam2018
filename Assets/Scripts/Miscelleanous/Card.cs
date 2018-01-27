@@ -57,20 +57,44 @@ public class Card : MonoBehaviour {
 
 	public void Foward ()
 	{
+		StartCoroutine (ActionFoward ());
+	}
+
+	IEnumerator ActionFoward()
+	{
 		Player go = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player>();
 		go.Forward ();
+		yield return null;
 	}
 
 	public void RotateClockWise ()
 	{
+		StartCoroutine (ActionRotateClockWise ());
+	}
+
+	IEnumerator ActionRotateClockWise ()
+	{
 		Player go = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player>();
+		go.Forward ();
+		yield return new WaitForSeconds (0.8f);
 		go.Rotate(ClockRot.Clockwise);
+		yield return new WaitForSeconds (0.2f);
 	}
 
 	public void RotateCounterClockWise ()
 	{
-		Player go = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player>();
-		go.Rotate(ClockRot.CounterClockwise);
+		StartCoroutine (ActionRotateCounterClockWise ());
 	}
+
+	IEnumerator ActionRotateCounterClockWise ()
+	{
+		Player go = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player>();
+		go.Forward ();
+		yield return new WaitForSeconds (0.8f);
+		go.Rotate(ClockRot.CounterClockwise);
+		yield return new WaitForSeconds (0.2f);
+	}
+
+
 			
 }
