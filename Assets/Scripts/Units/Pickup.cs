@@ -18,4 +18,8 @@ public class Pickup : MovingUnit {
 			Destroy (gameObject);
 		}
 	}
+
+	override protected void UpdateAnim(){
+
+	}
 }

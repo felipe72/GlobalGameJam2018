@@ -26,4 +26,8 @@ public class EscapePod : MovingUnit {
 			LoadingScreenManager.LoadScene (0);
 		}
 	}
+
+	override protected void UpdateAnim(){
+
+	}
 }
