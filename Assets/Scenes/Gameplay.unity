@@ -188,17 +188,17 @@ Prefab:
     - target: {fileID: 212306542624351714, guid: a6d021b1cef6a0148a55a621d4b4597d,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.47058824
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212306542624351714, guid: a6d021b1cef6a0148a55a621d4b4597d,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.47058824
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212306542624351714, guid: a6d021b1cef6a0148a55a621d4b4597d,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.47058824
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212306542624351714, guid: a6d021b1cef6a0148a55a621d4b4597d,
         type: 2}
@@ -290,7 +290,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1027449685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.72, y: 3.58, z: -10}
+  m_LocalPosition: {x: 6.5, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -344,6 +344,7 @@ MonoBehaviour:
   tileHurtGo: {fileID: 1287099327543936, guid: 91a12e9d3c497f24298bdae7b121d1f4, type: 2}
   tileWallGo: {fileID: 1072790333127462, guid: 50446667463735c45bb6b50ed59666e4, type: 2}
   player: {fileID: 698252258}
+  enemies: []
 --- !u!1 &1708086689
 GameObject:
   m_ObjectHideFlags: 0

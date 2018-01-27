@@ -17,6 +17,7 @@ public class MapManager : Singleton<MapManager> {
 	public GameObject tileHurtGo;
 	public GameObject tileWallGo;
 	public Player player;
+	public Enemy[] enemies;
 
 	Tile[,] map;
 
@@ -44,6 +45,7 @@ public class MapManager : Singleton<MapManager> {
 
 		CreateWalls ();
 		CreateHurtTiles ();
+		CreateEnemies ();
 
 		player.transform.position = playerStartingPos;
 		player.SetCurrentTile (GetTileAt(playerStartingPos));
@@ -62,6 +64,10 @@ public class MapManager : Singleton<MapManager> {
 				}
 			}
 		}
+	}
+
+	void CreateEnemies(){
+		
 	}
 
 	void CreateWalls(){

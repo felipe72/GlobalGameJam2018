@@ -31,4 +31,20 @@ public class Tile : MonoBehaviour{
 			onTileExit (unit);
 		}
 	}
+
+	public void PutHurt(){
+		onTileEnter += HurtUnit;
+
+		GetComponent<SpriteRenderer> ().color = Color.red;
+	}
+
+	public void RemoveHurt(){
+		onTileEnter -= HurtUnit;
+
+		GetComponent<SpriteRenderer> ().color = Color.white;
+	}
+
+	public void HurtUnit(MovingUnit unit){
+		print (unit.gameObject.name + " was hurt!");
+	}
 }

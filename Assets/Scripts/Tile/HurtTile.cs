@@ -11,8 +11,4 @@ public class HurtTile : Tile {
 			GetComponent<SpriteRenderer> ().sprite = sprites [Random.Range (0, sprites.Length)];
 		}
 	}
-
-	public void HurtUnit(MovingUnit unit){
-		print (unit.gameObject.name + " was hurt!");
-	}
 }
