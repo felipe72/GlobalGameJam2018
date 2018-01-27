@@ -51,7 +51,6 @@ public class MapManager : Singleton<MapManager> {
 		player.SetCurrentTile (GetTileAt(playerStartingPos));
 	}
 
-	int maxHeight = 0;
 
 	void CreateHurtTiles(){
 		for (int x = 0; x < tilesWidth; x++) {
@@ -67,17 +66,66 @@ public class MapManager : Singleton<MapManager> {
 	}
 
 	void CreateEnemies(){
-		Enemy enemy = enemies [Random.Range (0, enemies.Length)];
-		Instantiate (enemy.gameObject, new Vector3 (4, 4, 0), Quaternion.identity);
+		bool[,] boolMap = new bool[tilesWidth, tilesHeight];
+
+		for (int x = 0; x < tilesWidth; x++) {
+			for (int y = 0; y < tilesHeight; y++) {
+				boolMap [x, y] = true;
+
+				if (map [x, y].type == TileType.Wall) {
+					CornersBoolMap (x, y, boolMap);
+				}
+			}
+		}
+
+		boolMap [0, 0] = false;
+		boolMap [0, 1] = false;
+		boolMap [1, 1] = false;
+		boolMap [1, 0] = false;
+
+		string s = "";
+
+		for (int x = 0; x < tilesWidth; x++) {
+			for (int y = 0; y < tilesHeight; y++) {
+				s += boolMap [x, y] ? "T" : "F";
+				s += " ";
+			}
+			s += "\n";
+		}
+
+		for (int i = 0; i < 2; i++) {
+			Enemy enemy = enemies [Random.Range (0, enemies.Length)];
+			Vector2Int pos = new Vector2Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight));
+			while (boolMap [pos.x, pos.y]) {
+				pos = new Vector2Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight));;
+			}
+			CornersBoolMap (pos.x, pos.y, boolMap);
+			Instantiate (enemy.gameObject, new Vector3 (pos.x, pos.y, 0), Quaternion.identity);
+		}
+		print (s);
+	}
+
+	void CornersBoolMap(int x, int y, bool[,] boolMap){
+		UpdateBoolMap (x, y, boolMap);
+		UpdateBoolMap (x, y+1, boolMap);
+		UpdateBoolMap (x, y-1, boolMap);
+		UpdateBoolMap (x+1, y+1, boolMap);
+		UpdateBoolMap (x+1, y-1, boolMap);
+		UpdateBoolMap (x+1, y, boolMap);
+		UpdateBoolMap (x-1, y+1, boolMap);
+		UpdateBoolMap (x-1, y-1, boolMap);
+		UpdateBoolMap (x-1, y, boolMap);
+	}
+
+	void UpdateBoolMap(int x, int y, bool[,] boolMap){
+		if (x >= 0 && x < tilesWidth && y >= 0 && y < tilesHeight) {
+			boolMap [x, y] = false;
+		}
 	}
 
 	void CreateWalls(){
 		for (int i = 0; i < 2; i++) {
-			
 			WallTile wallTile = GenerateWall (new Vector2Int ((6 * i + 1) % tilesWidth, Random.Range(0, 3)));
-			int height = wallTile.height;
-			maxHeight = Mathf.Max (maxHeight, height + wallTile.pos.y);
-
 		}
 	}
 
