@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour{
 	[Header("Configurations")]
 	public Vector3Int pos;
 	public Sprite[] sprites;
+	public GameObject danger;
 
 	public event TileEvent onTileEnter;
 	public event TileEvent onTileExit;
@@ -36,13 +37,13 @@ public class Tile : MonoBehaviour{
 	public void PutHurt(){
 		onTileEnter += HurtUnit;
 
-		GetComponent<SpriteRenderer> ().color = Color.red;
+		danger.SetActive (true);
 	}
 
 	public void RemoveHurt(){
 		onTileEnter -= HurtUnit;
 
-		GetComponent<SpriteRenderer> ().color = Color.white;
+		danger.SetActive (false);
 	}
 
 	public void HurtUnit(MovingUnit unit){

@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour {
+public class Pickup : MovingUnit {
+	new void Start(){
+		base.Start ();
 
-	// Use this for initialization
-	void Start () {
-		
+		Initialize ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Initialize(){
+		currentTile.onTileEnter += CatchPickup;
+	}
+
+	void CatchPickup(MovingUnit unit){
+		if (unit.GetComponent<Player> () != null) {
+			Destroy (gameObject);
+		}
 	}
 }

@@ -110,7 +110,7 @@ public class LoadingScreenManager : MonoBehaviour {
 		while (true) {
 			s = "";
 			for (int i = 0; i < num; i++) {
-				s += ". ";
+				s += ".";
 			}
 			dots.text = s;
 

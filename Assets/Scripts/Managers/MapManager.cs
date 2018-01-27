@@ -16,6 +16,8 @@ public class MapManager : Singleton<MapManager> {
 	public GameObject tileGo;
 	public GameObject tileHurtGo;
 	public GameObject tileWallGo;
+	public GameObject pickupGo;
+	public GameObject escapePodGo;
 	public Player player;
 	public Enemy[] enemies;
 
@@ -49,11 +51,26 @@ public class MapManager : Singleton<MapManager> {
 		CreateWalls ();
 		CreateHurtTiles ();
 		CreateEnemies ();
+		CreatePickups ();
+		CreateEscapePod ();
 
 		player.transform.position = playerStartingPos;
 		player.SetCurrentTile (GetTileAt(playerStartingPos));
 	}
 
+	void CreateEscapePod(){
+		Instantiate (escapePodGo, playerStartingPos, Quaternion.identity);
+	}
+
+	void CreatePickups(){
+		Vector3Int pos = new Vector3Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight), 0);
+
+		while (GetTileAt (pos).type != TileType.Normal) {
+			pos = new Vector3Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight), 0);
+		}
+
+		Instantiate (pickupGo, pos, Quaternion.identity);
+	}
 
 	void CreateHurtTiles(){
 		for (int x = 0; x < tilesWidth; x++) {
