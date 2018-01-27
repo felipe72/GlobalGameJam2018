@@ -45,9 +45,14 @@ public class Card : MonoBehaviour {
 
 	}
 
-	public void RotateCard()
+	public void RotateToFront()
 	{
 		this.transform.DORotate (new Vector3 (0, 0, 0), 1f).SetLoops (1, LoopType.Incremental).SetEase(Ease.Linear);
+	}
+
+	public void RotateToBack()
+	{
+		this.transform.DORotate (new Vector3 (0, 180, 0), 1f).SetLoops (1, LoopType.Incremental).SetEase(Ease.Linear);
 	}
 
 	public void Foward ()
