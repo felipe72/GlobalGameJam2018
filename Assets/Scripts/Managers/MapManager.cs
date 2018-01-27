@@ -15,6 +15,7 @@ public class MapManager : Singleton<MapManager> {
 	[Header("Prefabs")]
 	public GameObject tileGo;
 	public GameObject tileHurtGo;
+	public GameObject tileWallGo;
 	public Player player;
 
 	Tile[,] map;
@@ -28,17 +29,17 @@ public class MapManager : Singleton<MapManager> {
 
 		for (int x = 0; x < tilesWidth; x++) {
 			for (int y = 0; y < tilesHeight; y++) {
+				GameObject prefab = tileGo;
+
 				float rng = Random.Range (0f, 1f);
-
-				GameObject go = null;
-
-				if (rng < .2f) {
-					go = Instantiate (tileHurtGo, new Vector3 (x, y), Quaternion.identity);
-					go.transform.SetParent (tileTransform);
-				} else {
-					go = Instantiate (tileGo, new Vector3 (x, y), Quaternion.identity);
-					go.transform.SetParent (tileTransform);
+				if (x == 2 && y == 2) {
+					prefab = tileWallGo;
+				} else if (rng < .2f) {
+					prefab = tileHurtGo;
 				}
+
+				GameObject go = Instantiate (prefab, new Vector3 (x, y), Quaternion.identity);
+				go.transform.SetParent (tileTransform);
 
 				Tile tile = go.GetComponent<Tile> ();
 				tile.pos = new Vector3Int (x, y, 0);

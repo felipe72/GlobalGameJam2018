@@ -336,6 +336,7 @@ MonoBehaviour:
   tileTransform: {fileID: 3733810}
   tileGo: {fileID: 1914827117092300, guid: 187bae0c5ca1d1f42a030f81c493f7db, type: 2}
   tileHurtGo: {fileID: 1287099327543936, guid: 91a12e9d3c497f24298bdae7b121d1f4, type: 2}
+  tileWallGo: {fileID: 1072790333127462, guid: 50446667463735c45bb6b50ed59666e4, type: 2}
   player: {fileID: 698252258}
 --- !u!1 &1708086689
 GameObject:

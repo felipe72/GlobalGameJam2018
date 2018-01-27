@@ -36,10 +36,33 @@ public class MovingUnit : MonoBehaviour {
 			return;
 		}
 
+		MoveToTile (newTile);
+	}
+
+	void MoveToTile(Tile newTile){
 		currentTile.OnTileExit (this);
-		newTile.OnTileEnter (this);
 
 		currentTile = newTile;
-		transform.position += directionsVec [index];
+		transform.position = currentTile.pos;
+
+		newTile.OnTileEnter (this);
 	}
+
+	public void Push(Direction direction, int length){
+		int index = System.Array.FindIndex(directions, x => x == direction);
+		Tile newTile = MapManager.Instance.GetTileAt(currentTile.pos + directionsVec[index] * length);
+
+		MoveToTile (newTile);
+	}
+
+	public void PushBack(int length){
+		int index = System.Array.FindIndex(directions, x => x == facingDirection);
+
+		index = (index + 2) % directions.Length;
+
+
+		Push (directions [index], length);
+	}
+
+
 }
