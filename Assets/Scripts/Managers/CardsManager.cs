@@ -43,12 +43,11 @@ public class CardsManager : Singleton<CardsManager> {
 		int currentAmount = cardsOnHand.Count;
 		for (int i = 0; i < 5 - currentAmount; i++) 
 		{
-			if (cardsOnDeckStack [0]) 
-			{
-				int index = cardsOnDeckStack.Count-1;	
-				GameObject _card = cardsOnDeckStack[index];
-				if (_card) 
-				{
+			if (cardsOnDeckStack.Count != 0) {
+				int cleverton = cardsOnDeckStack.Count - 1;	
+				print (cardsOnDeckStack.Count.ToString () + " " + cleverton.ToString ());
+				GameObject _card = cardsOnDeckStack [cleverton];
+				if (_card) {
 					Card cardComp = _card.GetComponent<Card> ();
 					_card.transform.SetParent (handCards.transform);
 					cardsOnDeckStack.Remove (_card);
@@ -57,7 +56,7 @@ public class CardsManager : Singleton<CardsManager> {
 					Debug.Log ("jooj");
 					//yield return new WaitForSeconds (0.1f);
 				}
-			}
+			} 
 		}
 	}
 
@@ -127,6 +126,7 @@ public class CardsManager : Singleton<CardsManager> {
 	IEnumerator ExecuteTurn()
 	{
 		TurnManager.Instance.SetHandCards (false);
+		TurnManager.Instance.startTurnButton.interactable = false;
 		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
 		{
 			GameObject _card = cardsOnExecutionStack [i];
@@ -147,15 +147,30 @@ public class CardsManager : Singleton<CardsManager> {
 			_currentCard.Execute ();
 			yield return new WaitForSeconds (1f);
 		}
-		RefreshHandCards ();
+
 		cardsOnExecutionStack.Clear ();
 		RefreshImageSymbols ();
 		actionsAmount = 0;
 
 		//Enemy Turn
 
+		List<Enemy> enemies = new List<Enemy>();
+		foreach (Enemy enemy in FindObjectsOfType<Enemy> ()) 
+		{
+			enemies.Add (enemy);
+		}
+		for (int j = 0; j < 3; j++) 
+		{
+			for (int i = 0; i < enemies.Count; i++) 
+			{
+				enemies [i].DoAI ();
+			}
+			yield return new WaitForSeconds (1f);
+		}
 
-
+		RefreshHandCards ();
+		yield return new WaitForSeconds (0.1f);
+		TurnManager.Instance.SetHandCards (true);
 	}
 
 

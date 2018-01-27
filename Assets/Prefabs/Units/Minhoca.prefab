@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95276913614938642}
   m_Layer: 0
   m_Name: Minhoca
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: 2
+  currentTile: {fileID: 0}
 --- !u!212 &212855835542328004
 SpriteRenderer:
   m_ObjectHideFlags: 1
