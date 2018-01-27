@@ -16,6 +16,7 @@ public class CardsManager : Singleton<CardsManager> {
 
 	[Header("Info Variables")]
 	public int actionsAmount;
+	public int deckAmount = 12;
 
 	[Header("Canvas Positions")]
 	public GameObject handCards;
@@ -26,24 +27,21 @@ public class CardsManager : Singleton<CardsManager> {
 
 	void Awake()
 	{
-		RefreshDeckCards ();
+		InitDeck ();
+		RefreshHandCards();
 		actionsAmount = 0;
 	}
 
-	void RefreshDeckCards()
+	/*void RefreshDeckCards()
 	{
-		for (int i = 0; i < 12; i++) 
-		{
-			int index = Random.Range (0, cardsAvailable.Count);	
-			GameObject _card = Instantiate (cardsAvailable [index], deckCards.transform);
-			cardsOnDeckStack.Add(_card);
-		}
+		
 		RefreshHandCards ();
-	}
+	}*/
 
 	void RefreshHandCards()
 	{
-		for (int i = 0; i < 5; i++) 
+		int currentAmount = cardsOnHand.Count;
+		for (int i = 0; i < 5 - currentAmount; i++) 
 		{
 			int index = cardsOnDeckStack.Count-1;	
 			GameObject _card = cardsOnDeckStack[index];
@@ -54,6 +52,28 @@ public class CardsManager : Singleton<CardsManager> {
 				cardsOnHand.Add (_card);
 			}
 		}
+	}
+
+	void ShuffleDeck(int amount)
+	{
+		for(int kek = 0 ; kek < amount ; kek++)
+			for (int i = 0; i < cardsOnDeckStack.Count; i++) 
+			{
+				int rand = Random.Range (0, cardsOnDeckStack.Count);
+				GameObject _aux = cardsOnDeckStack [rand];
+				cardsOnDeckStack [rand] = cardsOnDeckStack [i];
+				cardsOnDeckStack [i] = _aux;
+			}
+	}
+
+	void InitDeck()
+	{
+		for (int i = 0; i < cardsAvailable.Count; i++) 
+		{
+			GameObject goCard =  Instantiate (cardsAvailable [i], deckCards.transform);
+			cardsOnDeckStack.Add (goCard);
+		}
+		ShuffleDeck (3);
 	}
 
 	public void AddToExecutionStack(Card _card)
@@ -97,7 +117,15 @@ public class CardsManager : Singleton<CardsManager> {
 
 	IEnumerator ExecuteTurn()
 	{
-		for (int i = 0; i < cardsOnExecutionStack.Count-1; i++) 
+		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
+		{
+			GameObject _card = cardsOnExecutionStack [i];
+			_card.transform.SetParent (discardCards.transform);
+			cardsOnHand.Remove (_card);
+			cardsOnDiscardStack.Add (_card);
+		}
+		yield return new WaitForSeconds (1f);
+		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
 		{
 			Card _currentCard = cardsOnExecutionStack [i].GetComponent<Card> ();
 			_currentCard.Execute ();

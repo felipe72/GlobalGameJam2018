@@ -721,7 +721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &917725400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1413,13 +1413,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsAvailable:
   - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
-  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
+  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
+  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
+  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
+  - {fileID: 1820470172900306, guid: ddc1ff9773582f94ebea8269cdb4ddd5, type: 2}
   - {fileID: 1820470172900306, guid: 7729a0d86c689614cbfea3b140aa0a68, type: 2}
+  - {fileID: 1820470172900306, guid: 7729a0d86c689614cbfea3b140aa0a68, type: 2}
+  - {fileID: 1820470172900306, guid: 7729a0d86c689614cbfea3b140aa0a68, type: 2}
+  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
+  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
+  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
+  - {fileID: 1820470172900306, guid: 53626c6fca323b14993b815b0f3d0079, type: 2}
   cardsOnHand: []
   cardsOnDeckStack: []
   cardsOnDiscardStack: []
   cardsOnExecutionStack: []
   actionsAmount: 0
+  deckAmount: 12
   handCards: {fileID: 796960170}
   discardCards: {fileID: 420634207}
   deckCards: {fileID: 1632097581}
