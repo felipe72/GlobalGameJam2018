@@ -10,6 +10,18 @@ public class Card : MonoBehaviour {
 	public int energyCost;
 	public Actions action;
 
+	public bool isAlreadySelected = false;
+
+	public void AddToExecutionStack()
+	{
+		if (!isAlreadySelected) {
+			CardsManager.Instance.cardsOnExecutionStack.Add (this.gameObject);
+		} else {
+			CardsManager.Instance.cardsOnExecutionStack.Remove (this.gameObject);
+		}
+		isAlreadySelected = !isAlreadySelected;
+	}
+
 	public void Execute()
 	{
 		switch (action) 
