@@ -6,6 +6,9 @@ public class Enemy : MovingUnit {
 	new void Start(){
 		base.Start ();
 
+		facingDirection = directions [Random.Range (0, directions.Length)];
+		UpdateAnim ();
+
 		SetNextTile ();
 	}
 

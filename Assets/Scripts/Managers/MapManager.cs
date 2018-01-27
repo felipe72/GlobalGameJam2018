@@ -96,13 +96,12 @@ public class MapManager : Singleton<MapManager> {
 		for (int i = 0; i < 2; i++) {
 			Enemy enemy = enemies [Random.Range (0, enemies.Length)];
 			Vector2Int pos = new Vector2Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight));
-			while (boolMap [pos.x, pos.y]) {
+			while (!boolMap [pos.x, pos.y]) {
 				pos = new Vector2Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight));;
 			}
 			CornersBoolMap (pos.x, pos.y, boolMap);
 			Instantiate (enemy.gameObject, new Vector3 (pos.x, pos.y, 0), Quaternion.identity);
 		}
-		print (s);
 	}
 
 	void CornersBoolMap(int x, int y, bool[,] boolMap){
