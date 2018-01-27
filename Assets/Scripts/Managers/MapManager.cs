@@ -145,7 +145,7 @@ public class MapManager : Singleton<MapManager> {
 
 	void CreateWalls(){
 		for (int i = 0; i < 2; i++) {
-			WallTile wallTile = GenerateWall (new Vector2Int ((6 * i + 1) % tilesWidth, Random.Range(0, 3)));
+			GenerateWall (new Vector2Int ((6 * i + 1) % tilesWidth, Random.Range(0, 3)));
 		}
 	}
 
