@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class HurtTile : Tile {
 	void Awake(){
+		type = TileType.Hurt;
 		onTileEnter += HurtUnit;
+
+		if (sprites.Length != 0) {
+			GetComponent<SpriteRenderer> ().sprite = sprites [Random.Range (0, sprites.Length)];
+		}
 	}
 
 	public void HurtUnit(MovingUnit unit){

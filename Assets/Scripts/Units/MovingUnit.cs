@@ -8,9 +8,14 @@ public class MovingUnit : MonoBehaviour {
 	public Direction facingDirection = Direction.North;
 
 	protected Tile currentTile;
+	protected Animator anim;
 
-	private Direction[] directions = { Direction.North, Direction.East, Direction.South, Direction.West };
-	private Vector3Int[] directionsVec = { Vector3Int.up, Vector3Int.right, Vector3Int.down, Vector3Int.left };
+	protected Direction[] directions = { Direction.North, Direction.East, Direction.South, Direction.West };
+	protected Vector3Int[] directionsVec = { Vector3Int.up, Vector3Int.right, Vector3Int.down, Vector3Int.left };
+
+	void Start(){
+		anim = GetComponent<Animator> ();
+	}
 
 	public void Rotate(ClockRot rot){
 		int index = System.Array.FindIndex(directions, x => x == facingDirection);
@@ -18,14 +23,31 @@ public class MovingUnit : MonoBehaviour {
 		int newIndex = 0;
 
 		if (rot == ClockRot.Clockwise) {
-			transform.Rotate (new Vector3 (0, 0, -90));
 			newIndex = (((index + 1) % directions.Length) + directions.Length) % directions.Length;
 		} else {
-			transform.Rotate (new Vector3 (0, 0, 90));
 			newIndex = (((index - 1) % directions.Length) + directions.Length) % directions.Length;
 		}
 
 		facingDirection = directions[newIndex];
+
+		UpdateAnim ();
+	}
+
+	protected void UpdateAnim(){
+		switch (facingDirection) {
+		case Direction.East:
+			anim.SetTrigger ("right");	
+			break;
+		case Direction.West:
+			anim.SetTrigger ("left");	
+			break;
+		case Direction.North:
+			anim.SetTrigger ("up");	
+			break;
+		case Direction.South:
+			anim.SetTrigger ("down");	
+			break;
+		}
 	}
 
 	public void Forward(int lenght = 1){

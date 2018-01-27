@@ -12,6 +12,8 @@ public class Tile : MonoBehaviour{
 	public event TileEvent onTileEnter;
 	public event TileEvent onTileExit;
 
+	public TileType type = TileType.Normal;
+
 	void Awake(){
 		if (sprites.Length != 0) {
 			GetComponent<SpriteRenderer> ().sprite = sprites [Random.Range (0, sprites.Length)];

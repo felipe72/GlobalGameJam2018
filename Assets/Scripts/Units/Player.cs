@@ -16,4 +16,8 @@ public class Player : MovingUnit {
 			Rotate (ClockRot.CounterClockwise);
 		}
 	}
+
+	new void Forward(){
+		base.Forward ();
+	}
 }

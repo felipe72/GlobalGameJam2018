@@ -20,6 +20,11 @@ public class WallTile : Tile {
 	public Sprite[] center;
 
 	void Awake(){
+		type = TileType.Wall;
+
+		height = Random.Range (2, 6);
+		width = Random.Range (2, 6);
+
 		height = Mathf.Max (2, height);
 		width = Mathf.Max (2, width);
 
