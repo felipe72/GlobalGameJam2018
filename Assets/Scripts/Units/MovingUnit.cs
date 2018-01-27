@@ -13,19 +13,22 @@ public class MovingUnit : MonoBehaviour {
 	protected Direction[] directions = { Direction.North, Direction.East, Direction.South, Direction.West };
 	protected Vector3Int[] directionsVec = { Vector3Int.up, Vector3Int.right, Vector3Int.down, Vector3Int.left };
 
-	void Start(){
+	protected void Start(){
 		anim = GetComponent<Animator> ();
+
+		UpdateAnim ();
+
+		currentTile = MapManager.Instance.GetTileAt (new Vector3Int((int) transform.position.x, (int) transform.position.y, 0));
 	}
 
-	public void Rotate(ClockRot rot){
+	public void Rotate(ClockRot rot, int amount=1){
 		int index = System.Array.FindIndex(directions, x => x == facingDirection);
 
 		int newIndex = 0;
-
 		if (rot == ClockRot.Clockwise) {
-			newIndex = (((index + 1) % directions.Length) + directions.Length) % directions.Length;
+			newIndex = (((index + amount) % directions.Length) + directions.Length) % directions.Length;
 		} else {
-			newIndex = (((index - 1) % directions.Length) + directions.Length) % directions.Length;
+			newIndex = (((index - amount) % directions.Length) + directions.Length) % directions.Length;
 		}
 
 		facingDirection = directions[newIndex];
@@ -33,7 +36,7 @@ public class MovingUnit : MonoBehaviour {
 		UpdateAnim ();
 	}
 
-	protected void UpdateAnim(){
+	virtual protected void UpdateAnim(){
 		switch (facingDirection) {
 		case Direction.East:
 			anim.SetTrigger ("right");	
@@ -62,7 +65,7 @@ public class MovingUnit : MonoBehaviour {
 		MoveToTile (newTile);
 	}
 
-	void MoveToTile(Tile newTile){
+	protected void MoveToTile(Tile newTile){
 		currentTile.OnTileExit (this);
 
 		currentTile = newTile;

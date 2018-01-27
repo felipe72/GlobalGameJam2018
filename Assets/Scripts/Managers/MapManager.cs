@@ -67,7 +67,8 @@ public class MapManager : Singleton<MapManager> {
 	}
 
 	void CreateEnemies(){
-		
+		Enemy enemy = enemies [Random.Range (0, enemies.Length)];
+		Instantiate (enemy.gameObject, new Vector3 (4, 4, 0), Quaternion.identity);
 	}
 
 	void CreateWalls(){
