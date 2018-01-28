@@ -28,7 +28,7 @@ public class TooltipTarget : MonoBehaviour {
 		Tooltip.Instance.content.text = card.description;
 		Tooltip.Instance.cardImage.sprite = card.sprite;
 
-		Tooltip.Instance.ShowTooltip (card);
+		Tooltip.Instance.ShowTooltip ();
 	}
 
 	void DeactivateTooltip(){

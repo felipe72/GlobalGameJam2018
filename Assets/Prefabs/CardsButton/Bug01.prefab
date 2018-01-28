@@ -404,10 +404,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chooseCard: 0
   name: ClockWise
-  description: Move The Player ClockWise
+  description: "Th\xEDs b\xFAg has a 50% ch\xE1nc\xE9 of chang\xEDng the \xF3rder
+    of c\xE3rds"
   energyCost: 1
   action: 3
-  sprite: {fileID: 21300000, guid: 8fa62e4877a6ee043bf11094ea246f38, type: 3}
+  sprite: {fileID: 21300000, guid: b8fce721d6ed30b4c869fbe57cbdaca3, type: 3}
   curse1: 1
   symbol: {fileID: 21300000, guid: d12ae1fe8e8ecd0479a23f36e256abe9, type: 3}
   isAlreadySelected: 0

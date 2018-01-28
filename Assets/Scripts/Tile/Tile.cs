@@ -37,6 +37,10 @@ public class Tile : MonoBehaviour{
 	public void PutHurt(){
 		onTileEnter += HurtUnit;
 
+		if (FindObjectOfType<Player> ().currentTile == this) {
+			OnTileEnter (FindObjectOfType<Player> ());
+		}
+
 		danger.SetActive (true);
 	}
 

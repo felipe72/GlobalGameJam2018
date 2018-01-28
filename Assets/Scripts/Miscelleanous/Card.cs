@@ -35,6 +35,8 @@ public class Card : MonoBehaviour {
 
 	public void Execute()
 	{
+		EnergyManager.Instance.ChangeEnergy (-energyCost);
+		print (-energyCost);
 		switch (action) 
 		{
 		case Actions.Foward:

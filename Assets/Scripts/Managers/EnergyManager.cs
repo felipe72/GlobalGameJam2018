@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnergyManager : MonoBehaviour {
+public class EnergyManager : Singleton<EnergyManager> {
 	int currentEnergy = 20;
 
 	public GameObject bar;
@@ -39,6 +39,8 @@ public class EnergyManager : MonoBehaviour {
 
 		currentEnergy = Mathf.Max (0, currentEnergy);
 		currentEnergy = Mathf.Min (20, currentEnergy);
+
+		UpdateBar ();
 	}
 
 	Color GetCurrentColor(){

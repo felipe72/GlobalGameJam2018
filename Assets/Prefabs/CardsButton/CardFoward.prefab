@@ -335,7 +335,7 @@ MonoBehaviour:
   description: Move The Player Foward
   energyCost: 1
   action: 0
-  sprite: {fileID: 21300000, guid: f5b5057b2235bf347bfd5ca33aeb29c4, type: 3}
+  sprite: {fileID: 21300000, guid: 31f42bba74d74f24f80bb3543e2c2c88, type: 3}
   curse1: 0
   symbol: {fileID: 21300000, guid: 6fca2602dc2f2044099d10e5b10b39ea, type: 3}
   isAlreadySelected: 0

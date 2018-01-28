@@ -308,7 +308,7 @@ MonoBehaviour:
   description: Move The Player ClockWise
   energyCost: 1
   action: 1
-  sprite: {fileID: 21300000, guid: fbc1d34f801ea9343860d3e555b3b52a, type: 3}
+  sprite: {fileID: 21300000, guid: eb02363e227e2c94d86e004112f05b4c, type: 3}
   curse1: 0
   symbol: {fileID: 21300000, guid: a0b3c6d790a4b454e8aadf85ba7a6946, type: 3}
   isAlreadySelected: 0

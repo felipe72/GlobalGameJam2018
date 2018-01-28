@@ -9,7 +9,16 @@ public class CardButton : MonoBehaviour {
 	public Button button;
 
 	public void Click(){
-		button.gameObject.SetActive (true);
+		if (button.gameObject.activeSelf) {
+			button.gameObject.SetActive (false);
+		} else {
+			CardButton[] cards = transform.parent.GetComponentsInChildren<CardButton> ();
+			foreach (var card in cards) {
+				card.button.gameObject.SetActive (false);
+			}
+
+			button.gameObject.SetActive (true);
+		}
 	}
 
 	public void Confirm(){

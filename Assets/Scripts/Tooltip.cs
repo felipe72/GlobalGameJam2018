@@ -19,13 +19,11 @@ public class Tooltip : Singleton<Tooltip> {
 		if (canFollow) {
 			FollowMouse ();
 		}
-		print (Input.mousePosition);
 
 	}
 
 	void FollowMouse(){
 		var pos = Input.mousePosition ;
-
 
 		if (pos.x > xLimit) {
 			pos += Vector3.right * xOffset;
@@ -38,7 +36,7 @@ public class Tooltip : Singleton<Tooltip> {
 		rect.localPosition = pos + offset;
 	}
 
-	public void ShowTooltip(Card card){
+	public void ShowTooltip(){
 		canFollow = true;
 	}
 

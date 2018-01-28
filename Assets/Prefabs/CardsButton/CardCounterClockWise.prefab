@@ -335,7 +335,7 @@ MonoBehaviour:
   description: Move The Player Counter ClockWise
   energyCost: 1
   action: 2
-  sprite: {fileID: 21300000, guid: 314b37adfff13e243b2667b64f25db65, type: 3}
+  sprite: {fileID: 21300000, guid: 3a8e9deb05172e340a534e346de35ed6, type: 3}
   curse1: 0
   symbol: {fileID: 21300000, guid: a0b3c6d790a4b454e8aadf85ba7a6946, type: 3}
   isAlreadySelected: 0
