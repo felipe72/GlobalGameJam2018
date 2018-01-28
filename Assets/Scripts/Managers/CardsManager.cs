@@ -192,6 +192,11 @@ public class CardsManager : Singleton<CardsManager> {
 
 	IEnumerator ExecuteTurn()
 	{
+
+		foreach (var x in FindObjectsOfType<Nuvem> ()) {
+			x.CanMove ();
+		}
+
 		TurnManager.Instance.SetHandCards (false);
 		TurnManager.Instance.startTurnButton.interactable = false;
 		TurnManager.Instance.SetHoriGroup (true);
@@ -290,6 +295,10 @@ public class CardsManager : Singleton<CardsManager> {
 				enemies [i].DoAI ();
 			}
 			yield return new WaitForSeconds (1f);
+		}
+
+		foreach (var x in FindObjectsOfType<Nuvem> ()) {
+			x.StopMoving ();
 		}
 
 		RefreshHandCards ();
