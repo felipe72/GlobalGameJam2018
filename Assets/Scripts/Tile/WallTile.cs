@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 public class WallTile : Tile {
-	[Range(2, 5)]
+	[Range(2, 4)]
 	public int height;
 	[Range(2, 5)]
 	public int width;
@@ -22,13 +22,13 @@ public class WallTile : Tile {
 	void Awake(){
 		type = TileType.Wall;
 
-		height = Random.Range (2, 6);
+		height = Random.Range (2, 5);
 		width = Random.Range (2, 6);
 
 		height = Mathf.Max (2, height);
 		width = Mathf.Max (2, width);
 
-		height = Mathf.Min (5, height);
+		height = Mathf.Min (4, height);
 		width = Mathf.Min (5, width);
 
 		onTileEnter += PushBack;

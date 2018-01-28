@@ -12,6 +12,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour{
 				instance = FindObjectOfType<T> ();
 			return instance;
 		}
+		set {
+			instance = value;
+		}
 	}
 
 

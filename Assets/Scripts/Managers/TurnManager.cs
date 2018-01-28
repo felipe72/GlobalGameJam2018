@@ -9,6 +9,8 @@ public class TurnManager : Singleton<TurnManager> {
 	public bool isEnemyTurn = false;
 	public bool isAnimationTime = false;
 
+	public HorizontalLayoutGroup horiRef;
+
 	public Button startTurnButton;
 
 	public void SetHandCards(bool state)
@@ -18,6 +20,11 @@ public class TurnManager : Singleton<TurnManager> {
 			Button _button = CardsManager.Instance.cardsOnHand [i].GetComponent<Button> ();
 			_button.interactable = state;
 		}
+	}
+
+	public void SetHoriGroup(bool state)
+	{
+		horiRef.enabled = state;
 	}
 
 	public void SetAlreadyTaken(bool state)

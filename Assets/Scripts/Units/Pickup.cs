@@ -15,7 +15,10 @@ public class Pickup : MovingUnit {
 
 	void CatchPickup(MovingUnit unit){
 		if (unit.GetComponent<Player> () != null) {
-			Destroy (gameObject);
+			if (gameObject) {
+				currentTile.onTileEnter -= CatchPickup;
+				Destroy (gameObject);
+			}
 		}
 	}
 

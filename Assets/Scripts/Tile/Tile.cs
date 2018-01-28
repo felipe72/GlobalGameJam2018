@@ -47,6 +47,10 @@ public class Tile : MonoBehaviour{
 	}
 
 	public void HurtUnit(MovingUnit unit){
+		if (unit.GetComponent<Player> ()) {
+			CardsManager.Instance.AddCurse();
+		}
+
 		print (unit.gameObject.name + " was hurt!");
 	}
 
