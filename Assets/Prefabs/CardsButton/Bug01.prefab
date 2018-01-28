@@ -126,6 +126,8 @@ GameObject:
   - component: {fileID: 222865616641668292}
   - component: {fileID: 114091111439697892}
   - component: {fileID: 114901993196028442}
+  - component: {fileID: 114232102388870228}
+  - component: {fileID: 114557246375099376}
   m_Layer: 0
   m_Name: Bug01
   m_TagString: Untagged
@@ -203,6 +205,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114232102388870228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825882246468346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!114 &114258504908192148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,6 +326,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114557246375099376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825882246468346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f144fe3dc7427a42aec459f09790508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114594958993105092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -380,7 +406,8 @@ MonoBehaviour:
   name: ClockWise
   description: Move The Player ClockWise
   energyCost: 1
-  action: 1
+  action: 3
+  sprite: {fileID: 21300000, guid: 8fa62e4877a6ee043bf11094ea246f38, type: 3}
   curse1: 1
   symbol: {fileID: 21300000, guid: d12ae1fe8e8ecd0479a23f36e256abe9, type: 3}
   isAlreadySelected: 0

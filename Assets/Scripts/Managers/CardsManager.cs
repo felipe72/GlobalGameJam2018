@@ -41,6 +41,7 @@ public class CardsManager : Singleton<CardsManager> {
 	void Awake()
 	{
 		if (PersistingData.Instance.cards.Count != 0) {
+			cardsAvailable.Clear ();
 			Transform canvas = GameObject.Find ("Canvas").GetComponent<Transform> ();
 			foreach (var card in PersistingData.Instance.cards) {
 				GameObject go = Instantiate (card.gameObject, deckCards.transform);
@@ -53,6 +54,7 @@ public class CardsManager : Singleton<CardsManager> {
 			foreach (var x in PersistingData.Instance.cards) {
 				Destroy (x.gameObject);
 			}
+			PersistingData.Instance.cards.Clear ();
 		}
 
 		InitDeck ();
@@ -215,7 +217,7 @@ public class CardsManager : Singleton<CardsManager> {
 			}
 		}
 		float rng = Random.Range (0, 1f);
-		if (rng < 1f && curse1Passive) {
+		if (rng < .5f && curse1Passive) {
 			var temp = cardsOnExecutionStack [0];
 			cardsOnExecutionStack [0] = cardsOnExecutionStack [2];
 			cardsOnExecutionStack [2] = cardsOnExecutionStack [1];
@@ -229,7 +231,7 @@ public class CardsManager : Singleton<CardsManager> {
 			Card _currentCard = cardsOnExecutionStack [i].GetComponent<Card> ();
 			if (curse1Active) {
 				rng = Random.Range (0, 1f);
-				if (rng < 1f) {
+				if (rng < .5f) {
 					Actions[] actions = { Actions.Clockwise, Actions.CounterClockwise, Actions.Foward };
 					_currentCard.action = actions [Random.Range (0, 3)];
 

@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 222214374068859048}
   - component: {fileID: 114629724845006902}
   - component: {fileID: 114848718117602788}
+  - component: {fileID: 114075532793615608}
+  - component: {fileID: 114242846794648774}
   m_Layer: 0
   m_Name: CardFoward
   m_TagString: Untagged
@@ -133,6 +135,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114075532793615608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820470172900306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
+--- !u!114 &114242846794648774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820470172900306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f144fe3dc7427a42aec459f09790508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114377429656066720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,10 +330,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a431ffbd65c6c4585e2558ddeff22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chooseCard: 0
   name: Foward
   description: Move The Player Foward
   energyCost: 1
   action: 0
+  sprite: {fileID: 21300000, guid: f5b5057b2235bf347bfd5ca33aeb29c4, type: 3}
+  curse1: 0
   symbol: {fileID: 21300000, guid: 6fca2602dc2f2044099d10e5b10b39ea, type: 3}
   isAlreadySelected: 0
 --- !u!114 &114944849061211716

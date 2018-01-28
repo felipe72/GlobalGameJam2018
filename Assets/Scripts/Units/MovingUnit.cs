@@ -71,7 +71,7 @@ public class MovingUnit : MonoBehaviour {
 		currentTile.OnTileExit (this);
 
 		currentTile = newTile;
-		transform.position = currentTile.pos;
+		transform.DOMove(currentTile.pos, 1f).SetEase(Ease.InOutQuad);
 
 		newTile.OnTileEnter (this);
 	}

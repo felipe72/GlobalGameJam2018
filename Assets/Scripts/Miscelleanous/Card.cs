@@ -12,6 +12,7 @@ public class Card : MonoBehaviour {
 	public string description;
 	public int energyCost;
 	public Actions action;
+	public Sprite sprite;
 
 	public bool curse1;
 
