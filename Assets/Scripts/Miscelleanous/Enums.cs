@@ -7,7 +7,7 @@ public enum ClockRot{
 }
 
 public enum Actions{
-	Foward, Clockwise, CounterClockwise, Bug
+	Foward, Clockwise, CounterClockwise, Bug, Recharge, JustClockWise, JustCounterClockwise, Dash, TurnBack, TwiceNext
 }
 public enum WallPositions{
 	BottomRight, Bottom, BottomLeft, Left, UpperLeft, Upper, UpperRight, Right, Center

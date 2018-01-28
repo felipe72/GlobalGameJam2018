@@ -23,6 +23,8 @@ public class CardsManager : Singleton<CardsManager> {
 	public int actionsAmount;
 	public int deckAmount = 12;
 
+	public int specialIndex = 0;
+
 	[Header("Canvas Positions")]
 	public GameObject handCards;
 	public GameObject discardCards;
@@ -166,6 +168,15 @@ public class CardsManager : Singleton<CardsManager> {
 			symbolSlots [i].sprite = _card.symbol;
 			symbolSlots [i].color = Color.white;
 
+
+			if (_card.action == Actions.JustClockWise) {
+				symbolSlots [i].transform.rotation = Quaternion.Euler(new Vector3(0,0,270));
+			} else if (_card.action == Actions.JustCounterClockwise) {
+				symbolSlots [i].transform.rotation = Quaternion.Euler(new Vector3(0,0,90));
+			} else {
+				symbolSlots [i].transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+			}
+
 			if (_card.action == Actions.Clockwise) {
 				symbolSlots [i].transform.localScale = new Vector3 (-1, 1, 1);
 			} else {
@@ -220,9 +231,15 @@ public class CardsManager : Singleton<CardsManager> {
 		float rng = Random.Range (0, 1f);
 		if (rng < .5f && curse1Passive) {
 			var temp = cardsOnExecutionStack [0];
-			cardsOnExecutionStack [0] = cardsOnExecutionStack [2];
-			cardsOnExecutionStack [2] = cardsOnExecutionStack [1];
-			cardsOnExecutionStack [1] = temp;
+			int jooj = cardsOnExecutionStack.Count;
+			if (jooj == 2) {
+				cardsOnExecutionStack [0] = cardsOnExecutionStack [1];
+				cardsOnExecutionStack [1] = temp;
+			} else if (jooj == 3) {
+				cardsOnExecutionStack [0] = cardsOnExecutionStack [2];
+				cardsOnExecutionStack [2] = cardsOnExecutionStack [1];
+				cardsOnExecutionStack [1] = temp;
+			}
 			RefreshImageSymbols ();
 		}
 
@@ -247,6 +264,10 @@ public class CardsManager : Singleton<CardsManager> {
 			}
 
 			RefreshImageSymbols ();
+			if (_currentCard.action == Actions.TwiceNext) 
+			{
+				specialIndex = i;
+			}
 			_currentCard.Execute ();
 			yield return new WaitForSeconds (1f);
 		}

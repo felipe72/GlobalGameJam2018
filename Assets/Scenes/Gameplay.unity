@@ -14673,11 +14673,14 @@ MonoBehaviour:
   - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
   - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
   - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
-  - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
   - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
   - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
-  - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
-  - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
+  - {fileID: 1932341425535100, guid: 746e492643ab2834f9df30619de1d3a8, type: 2}
+  - {fileID: 1932341425535100, guid: 746e492643ab2834f9df30619de1d3a8, type: 2}
+  - {fileID: 1321011771540510, guid: 0e68ec03b26a5514ba828807fbe389bf, type: 2}
+  - {fileID: 1321011771540510, guid: 0e68ec03b26a5514ba828807fbe389bf, type: 2}
+  - {fileID: 1676663803876652, guid: ad12c3cdd8dc3de40a628b26ad33eadb, type: 2}
+  - {fileID: 1676663803876652, guid: ad12c3cdd8dc3de40a628b26ad33eadb, type: 2}
   cardsOnHand: []
   cardsOnDeckStack: []
   cardsOnDiscardStack: []
@@ -14689,6 +14692,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a0b3c6d790a4b454e8aadf85ba7a6946, type: 3}
   actionsAmount: 0
   deckAmount: 12
+  specialIndex: 0
   handCards: {fileID: 796960170}
   discardCards: {fileID: 420634207}
   deckCards: {fileID: 1632097581}
@@ -14702,6 +14706,9 @@ MonoBehaviour:
   - {fileID: 1820470172900306, guid: a5e7e5470bf95f0419c26845670688c8, type: 2}
   - {fileID: 1820470172900306, guid: d18cf7c3639dfce42b5850f25a47729b, type: 2}
   - {fileID: 1820470172900306, guid: 1dcb89c83bd87e747aff0c2e5df59453, type: 2}
+  - {fileID: 1676663803876652, guid: ad12c3cdd8dc3de40a628b26ad33eadb, type: 2}
+  - {fileID: 1932341425535100, guid: 746e492643ab2834f9df30619de1d3a8, type: 2}
+  - {fileID: 1321011771540510, guid: 0e68ec03b26a5514ba828807fbe389bf, type: 2}
   hori: {fileID: 534431182}
 --- !u!1 &1767117397
 GameObject:
