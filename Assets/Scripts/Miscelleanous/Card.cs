@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
 
+	public bool chooseCard;
+
 	public string name;
 	public string description;
 	public int energyCost;
 	public Actions action;
+
+	public bool curse1;
 
 	public Sprite symbol;
 
@@ -52,7 +56,7 @@ public class Card : MonoBehaviour {
 
 	public void RotateToBack()
 	{
-		this.transform.DORotate (new Vector3 (0, 180, 0), 1f).SetLoops (1, LoopType.Incremental).SetEase(Ease.Linear);
+		this.transform.DORotate (new Vector3 (0, 180, 0), 1f).SetLoops (1, LoopType.Incremental).SetEase (Ease.Linear);
 	}
 
 	public void Foward ()
