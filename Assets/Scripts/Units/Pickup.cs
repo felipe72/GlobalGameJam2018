@@ -17,6 +17,7 @@ public class Pickup : MovingUnit {
 		if (unit.GetComponent<Player> () != null) {
 			if (gameObject) {
 				currentTile.onTileEnter -= CatchPickup;
+				MapManager.Instance.ArrowToEscape();
 				Destroy (gameObject);
 			}
 		}

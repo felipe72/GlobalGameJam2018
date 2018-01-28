@@ -83,7 +83,9 @@ public class MapManager : Singleton<MapManager> {
 		Instantiate (pickupGo, pos, Quaternion.identity);
 
 		arrow.transform.position = pos + Vector3.up;
-		arrow.DOFade (1f, 5f);
+		arrow.DOFade (1f, 5f).OnComplete(() =>{
+			arrow.DOFade (0f, 5f);
+		});
 	}
 
 	void CreateHurtTiles(){
@@ -246,6 +248,14 @@ public class MapManager : Singleton<MapManager> {
 		}
 
 		return map [pos.x, pos.y];
+	}
+
+	public void ArrowToEscape(){
+		arrow.transform.position = FindObjectOfType<EscapePod> ().currentTile.pos + Vector3.up;
+		arrow.color = Color.white;
+		arrow.DOFade (1f, 5f).OnComplete(() =>{
+			arrow.DOFade (0f, 5f);
+		});
 	}
 
 	public bool enemyInTile(Tile tile){
