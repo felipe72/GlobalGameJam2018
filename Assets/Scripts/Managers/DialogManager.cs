@@ -21,16 +21,22 @@ public class DialogManager : MonoBehaviour {
 	public Text content;
 	public Text _name;
 	public Image avatar;
+	public AudioClip[] clips;
+
+	AudioSource source;
 
 	Queue<DialogEntry> queue;
 
 	void Awake(){
 		queue = new Queue<DialogEntry> ();
 	}
+	void Start(){
+		source = GetComponent<AudioSource> ();
+	}
 
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.L)) {
-			AddEntry (new DialogEntry ("Kkk eae men", "Jubileu", null));
+			AddEntry (new DialogEntry ("Meu parca, tu eh o parca mais de boa dos meus parca", "Jubileu", null));
 		}
 	}
 
@@ -69,10 +75,20 @@ public class DialogManager : MonoBehaviour {
 	}
 
 	IEnumerator SlowTypying(DialogEntry entry){
+		AudioClip clip = clips [Random.Range (0, clips.Length)];
+		source.clip = clip;
+		source.volume = 0.1f;
+		source.Play ();
+
+
 		foreach (var x in entry.content) {
 			content.text += x;
-			yield return new WaitForSeconds (.1f);
+			yield return new WaitForSeconds (.05f);
 		}
+
+		source.DOFade (0f, 1f).OnComplete (() => {
+			source.Stop();
+		});
 	}
 
 	IEnumerator ActivateBox(){

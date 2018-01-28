@@ -16,3 +16,7 @@ public enum WallPositions{
 public enum TileType{
 	Normal, Hurt, Wall
 }
+
+public enum MusicType{
+	Menu, Gameplay, Win, Lose
+}

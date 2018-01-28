@@ -6,6 +6,8 @@ using DG.Tweening;
 public class MovingUnit : MonoBehaviour {
 	[Header("Configuration")]
 	public Direction facingDirection = Direction.North;
+	public AudioClip[] hitSounds;
+	protected AudioSource source;
 
 	[HideInInspector]
 	public Tile currentTile;
@@ -15,6 +17,7 @@ public class MovingUnit : MonoBehaviour {
 	protected Vector3Int[] directionsVec = { Vector3Int.up, Vector3Int.right, Vector3Int.down, Vector3Int.left };
 
 	protected void Start(){
+		source = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
 
 		UpdateAnim ();
@@ -38,6 +41,8 @@ public class MovingUnit : MonoBehaviour {
 	}
 
 	virtual protected void UpdateAnim(){
+		print (gameObject.name);
+
 		switch (facingDirection) {
 		case Direction.East:
 			anim.SetTrigger ("right");	
@@ -82,6 +87,9 @@ public class MovingUnit : MonoBehaviour {
 	public void Push(Direction direction, int length){
 		int index = System.Array.FindIndex(directions, x => x == direction);
 		Tile newTile = MapManager.Instance.GetTileAt(currentTile.pos + directionsVec[index] * length);
+
+		source.clip = hitSounds [Random.Range (0, hitSounds.Length)];
+		source.Play ();
 
 		MoveToTile (newTile);
 	}

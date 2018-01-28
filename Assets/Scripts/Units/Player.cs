@@ -12,6 +12,10 @@ public class Player : MovingUnit {
 	public Text[] rankTexts;
 	public GameObject changeRanking;
 
+	void Start(){
+		base.Start ();
+	}
+
 	public void SetCurrentTile(Tile tile){
 		currentTile = tile;
 	}
@@ -31,6 +35,8 @@ public class Player : MovingUnit {
 	public override void GetHurt (){
 		base.GetHurt ();
 
+		source.clip = hitSounds [Random.Range (0, hitSounds.Length)];
+		source.Play ();
 		GameObject go = Instantiate (hits [Random.Range (0, hits.Length)], transform);
 		go.transform.localPosition = Vector3.zero;
 	}

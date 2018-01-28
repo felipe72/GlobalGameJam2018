@@ -18,7 +18,6 @@ public class MenuManager : MonoBehaviour {
 		PlayerPrefs.SetInt ("currentMission", 0);
 		normalWindow.DOLocalMoveX (400, 1f);
 
-
 		Rank ();
 	}
 
