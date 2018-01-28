@@ -19,7 +19,7 @@ public class Enemy : MovingUnit {
 		}
 	}
 
-	void DoAI(){
+	public void DoAI(){
 		Tile tile = GetForwardTile ();
 
 		if (MapManager.Instance.isValid(tile) && tile.type != TileType.Wall && !MapManager.Instance.enemyInTile(tile)) {			

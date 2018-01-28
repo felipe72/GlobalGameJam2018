@@ -113,7 +113,7 @@ public class MapManager : Singleton<MapManager> {
 			s += "\n";
 		}
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 8; i++) {
 			Enemy enemy = enemies [Random.Range (0, enemies.Length)];
 			Vector2Int pos = new Vector2Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight));
 			while (!boolMap [pos.x, pos.y]) {
