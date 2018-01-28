@@ -17,6 +17,7 @@ public class MapManager : Singleton<MapManager> {
 	public Text currentMisionText;
 	public Image black;
 	public Image pauseMenu;
+	public SpriteRenderer arrow;
 
 	[Header("Prefabs")]
 	public GameObject tileGo;
@@ -73,13 +74,16 @@ public class MapManager : Singleton<MapManager> {
 	}
 
 	void CreatePickups(){
-		Vector3Int pos = new Vector3Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight), 0);
+		Vector3Int pos = new Vector3Int (Random.Range (tilesWidth/2, tilesWidth), Random.Range (tilesHeight/2, tilesHeight), 0);
 
 		while (GetTileAt (pos).type != TileType.Normal) {
-			pos = new Vector3Int (Random.Range (0, tilesWidth), Random.Range (0, tilesHeight), 0);
+			pos = new Vector3Int (Random.Range (tilesWidth/2, tilesWidth), Random.Range (tilesHeight/2, tilesHeight), 0);
 		}
 
 		Instantiate (pickupGo, pos, Quaternion.identity);
+
+		arrow.transform.position = pos + Vector3.up;
+		arrow.DOFade (1f, 5f);
 	}
 
 	void CreateHurtTiles(){

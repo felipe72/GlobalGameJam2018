@@ -71,9 +71,12 @@ public class MovingUnit : MonoBehaviour {
 		currentTile.OnTileExit (this);
 
 		currentTile = newTile;
-		transform.DOMove(currentTile.pos, 1f).SetEase(Ease.InOutQuad);
+		transform.DOMove(currentTile.pos, 1f).SetEase(Ease.InOutQuad).OnComplete(() =>{
+		
+		});
 
 		newTile.OnTileEnter (this);
+
 	}
 
 	public void Push(Direction direction, int length){

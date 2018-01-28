@@ -35,6 +35,7 @@ public class EscapePod : MovingUnit {
 						cardsButtons[i].GetComponent<Image>().color = Color.white;
 						cardsButtons[i].card = card;
 						cardsButtons[i].GetComponent<Image>().sprite = card.sprite;
+						cardsButtons[i].GetComponentInChildren<Text>().text = card.energyCost.ToString();
 					}
 				});
 			});

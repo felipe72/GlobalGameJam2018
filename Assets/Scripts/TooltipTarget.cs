@@ -27,6 +27,7 @@ public class TooltipTarget : MonoBehaviour {
 	void ActivateTooltip(){
 		Tooltip.Instance.content.text = card.description;
 		Tooltip.Instance.cardImage.sprite = card.sprite;
+		Tooltip.Instance.cost.text = card.energyCost.ToString();
 
 		Tooltip.Instance.ShowTooltip ();
 	}

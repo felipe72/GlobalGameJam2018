@@ -24,6 +24,7 @@ public class EndgameMenu : MonoBehaviour {
 			if (i < x.Count) {
 				z [i].card = x [i];
 				z [i].GetComponent<Image> ().sprite = z [i].card.sprite;
+				z [i].GetComponentInChildren<Text> ().text = z [i].card.energyCost.ToString();
 			}
 
 		}

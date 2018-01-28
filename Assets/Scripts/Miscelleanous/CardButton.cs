@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using DG.Tweening;
 
 public class CardButton : MonoBehaviour {
 	public Card card;
@@ -41,11 +42,23 @@ public class CardButton : MonoBehaviour {
 	}
 
 	public void Confirm2(){
+		foreach (Transform x in transform) {
+			x.gameObject.SetActive (false);
+		}
+
+		transform.parent.GetComponent<GridLayoutGroup>().enabled = false;
+		transform.DOLocalMoveY (transform.localPosition.y - 200, .5f).OnComplete (() => {
+			StartCoroutine(loadScene());
+		});
+		GetComponent<Image> ().DOFade (0f, .5f);
+	}
+
+	IEnumerator loadScene(){
+		yield return new WaitForSeconds (1f);
+
 		CardsManager _cards = CardsManager.Instance;
 
 		var x = _cards.cardsOnDeckStack.Concat (_cards.cardsOnDiscardStack).Concat (_cards.cardsOnHand).Select (y => y.GetComponent<Card> ()).ToList();
-
-		print (x.Find (a => a.action == card.action));
 
 		x.Remove (x.Find(a => a.action == card.action));
 

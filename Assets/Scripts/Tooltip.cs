@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Tooltip : Singleton<Tooltip> {
 	public Text content;
 	public Image cardImage;
+	public Text cost;
 
 	public int xLimit;
 	public int yLimit;

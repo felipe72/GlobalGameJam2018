@@ -13,12 +13,17 @@ public class Card : MonoBehaviour {
 	public int energyCost;
 	public Actions action;
 	public Sprite sprite;
+	public Text costText;
 
 	public bool curse1;
 
 	public Sprite symbol;
 
 	public bool isAlreadySelected = false;
+
+	void Start(){
+		costText.text = energyCost.ToString ();
+	}
 
 	/*void Update()
 	{
