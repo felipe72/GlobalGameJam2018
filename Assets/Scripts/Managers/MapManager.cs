@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class MapManager : Singleton<MapManager> {
 	[Header("Configuration")]
@@ -12,6 +14,9 @@ public class MapManager : Singleton<MapManager> {
 
 	[Header("Game Objects")]
 	public Transform tileTransform;
+	public Text currentMisionText;
+	public Image black;
+	public Image pauseMenu;
 
 	[Header("Prefabs")]
 	public GameObject tileGo;
@@ -27,6 +32,10 @@ public class MapManager : Singleton<MapManager> {
 
 
 	void Awake(){
+		int currentMission = PlayerPrefs.GetInt ("currentMission", 0) + 1;
+		PlayerPrefs.SetInt ("currentMission", currentMission);
+		currentMisionText.text = currentMission.ToString ();
+
 		enemyList = new List<Enemy> ();
 		GenerateMap ();	
 	}
@@ -251,5 +260,24 @@ public class MapManager : Singleton<MapManager> {
 		}
 
 		return true;
+	}
+
+	public void Pause(){
+		Time.timeScale = 0f;
+		black.raycastTarget = true;
+		black.DOFade (.95f, 1f).SetUpdate(true);
+		pauseMenu.rectTransform.DOLocalMoveX (pauseMenu.rectTransform.localPosition.x - 454, 1f).SetUpdate(true);
+	}
+
+	public void Resume(){
+		black.DOFade (0, 1f).SetUpdate(true).OnComplete(() => {
+			Time.timeScale = 1f;
+			black.raycastTarget = false;
+		});
+		pauseMenu.rectTransform.DOLocalMoveX (pauseMenu.rectTransform.localPosition.x + 454, 1f).SetUpdate(true);
+	}
+
+	public void Exit(){
+		Application.Quit ();
 	}
 }

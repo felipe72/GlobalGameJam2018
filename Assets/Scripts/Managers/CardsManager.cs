@@ -158,12 +158,13 @@ public class CardsManager : Singleton<CardsManager> {
 	{
 		for (int i = 0; i < 3; i++) 
 		{
-			symbolSlots [i].sprite = null;
+			symbolSlots [i].color = Color.clear;
 		}
 		for (int i = 0; i < cardsOnExecutionStack.Count; i++) 
 		{
 			Card _card = cardsOnExecutionStack [i].GetComponent<Card> ();
 			symbolSlots [i].sprite = _card.symbol;
+			symbolSlots [i].color = Color.white;
 
 			if (_card.action == Actions.Clockwise) {
 				symbolSlots [i].transform.localScale = new Vector3 (-1, 1, 1);

@@ -55,6 +55,8 @@ public class Tile : MonoBehaviour{
 			CardsManager.Instance.AddCurse();
 		}
 
+		unit.GetHurt ();
+
 		print (unit.gameObject.name + " was hurt!");
 	}
 

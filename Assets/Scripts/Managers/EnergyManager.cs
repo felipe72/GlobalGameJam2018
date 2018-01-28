@@ -40,7 +40,15 @@ public class EnergyManager : Singleton<EnergyManager> {
 		currentEnergy = Mathf.Max (0, currentEnergy);
 		currentEnergy = Mathf.Min (20, currentEnergy);
 
+		if (currentEnergy == 0) {
+			End ();
+		}
+
 		UpdateBar ();
+	}
+
+	void End(){
+		FindObjectOfType<Player> ().Die ();
 	}
 
 	Color GetCurrentColor(){

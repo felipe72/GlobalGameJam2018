@@ -93,5 +93,8 @@ public class MovingUnit : MonoBehaviour {
 		Push (directions [index], length);
 	}
 
+	virtual public void GetHurt(){
+
+	}
 
 }

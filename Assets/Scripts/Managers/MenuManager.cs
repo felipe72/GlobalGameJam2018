@@ -11,11 +11,15 @@ public class MenuManager : MonoBehaviour {
 	public Image normalImg;
 	public Image rankImg;
 
-
-	bool normal = true;
+	public GameObject names;
+	public GameObject missions;
 
 	void Start(){
+		PlayerPrefs.SetInt ("currentMission", 0);
 		normalWindow.DOLocalMoveX (400, 1f);
+
+
+		Rank ();
 	}
 
 	public void ActivateRank(){
@@ -45,6 +49,16 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	public void Rank(){
+		var _names = names.GetComponentsInChildren<Text> ();
+		var _missions = missions.GetComponentsInChildren<Text> ();
 
+		for (int i = 0; i < 10; i++) {
+			int amount = PlayerPrefs.GetInt (i.ToString () + "place");
+			string name = PlayerPrefs.GetString (i.ToString () + "name");
+			string s = string.Format ("{0}.{1}", (i+1).ToString(), name);
+
+			_names [i].text = s;
+			_missions [i].text = amount.ToString ();
+		}
 	}
 }
